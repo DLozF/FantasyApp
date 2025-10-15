@@ -12,7 +12,7 @@ double pointsArr[6];
 
 };
 
-constexpr int missed = 100;
+constexpr double missed = 100;
 
 
 //Welcome Message
