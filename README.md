@@ -1,1 +1,1 @@
-# FantasyApp
+# Fantasy Football App
