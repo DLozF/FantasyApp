@@ -24,7 +24,7 @@ void welcomeMessage()
 
 
 // Checks how many games played
-int checkGamesPlayed(const double pointsArr[6])
+int checkGamesPlayed(double pointsArr[6])
 {
     int gamesPlayed = 0;    //starts at 0
 
@@ -42,7 +42,7 @@ int checkGamesPlayed(const double pointsArr[6])
 
 
 // Calculates Average of Points with games played
-float calculateAverage(const double pointsArr[6])
+float calculateAverage(double pointsArr[6])
 {
     averagePoints = 0;
     float totalPoints = 0.0;
