@@ -1,22 +1,32 @@
 #include <iostream>
 #include <string>
 #include "BackFantasy.h"
+#include <cmath>
+
+
+double roundOff(double value, int places)
+{
+    return round(value * pow(10.0, places)) / pow(10.0, places);
+}
+
 
 int main()
 {
     // declare player structs
     Player playerA;
     Player playerB;
-    
 
-    
+
+
+
+
     welcomeMessage();
 
-    // get player A info
+    // get player A info2
     std::cout << "Enter Player A: ";
     std::getline(std::cin, playerA.name);
-    std::cout << "\nEnter points for Player B from Week 1 - 6, if injured input x " << std::endl;
-    
+    std::cout << "\nEnter points for Player A from Week 1 - 6, if injured input x " << std::endl;
+
     for (int i = 0; i < 6; i++)
     {
         std::cout << "Week " << (i + 1) << ": ";
@@ -43,10 +53,10 @@ int main()
     std::cout << "\nEnter Player B: ";
     std::getline(std::cin, playerB.name);
     std::cout << "\nEnter points for Player B from Week 1 - 6, if injured input x " << std::endl;
-    
+
     for (int i = 0; i < 6; i++)
     {
-        std::cout << "Week" << (i + 1) << ": ";
+        std::cout << "Week " << (i + 1) << ": ";
 
         std::string line;
         std::getline(std::cin, line);
@@ -62,23 +72,23 @@ int main()
 
     playerA.averagePoints = calculateAverage(playerA.pointsArr);
     playerB.averagePoints = calculateAverage(playerB.pointsArr);
-    
+
+    playerA.totalPoints = sumPoints(playerA.pointsArr);
+    playerB.totalPoints = sumPoints(playerB.pointsArr);
 
 
 
 
-    // float totalA = playerA.totalPoints;
-   //  float totalB = playerB.totalPoints;
 
-    // std::cout << "Total Points: " << std::endl;
-    // std::cout << playerA.name << ": " << totalA << std::endl;
-    // std::cout << playerB.name << ": " << totalB << std::endl;
+    std::cout << "\nTotal Points: " << std::endl;
+    std::cout << playerA.name << ": " << roundOff(playerA.totalPoints, 2) << std::endl;
+    std::cout << playerB.name << ": " << roundOff(playerB.totalPoints, 2) << std::endl;
 
-    
 
-    std::cout << "Average Points: " << std::endl;
-    std::cout << playerA.name << ": " << playerA.averagePoints << std::endl;
-    std::cout << playerB.name << ": " << playerB.averagePoints << std::endl;
+
+    std::cout << "\nAverage Points: " << std::endl;
+    std::cout << playerA.name << ": " << roundOff(playerA.averagePoints, 2) << std::endl;
+    std::cout << playerB.name << ": " << roundOff(playerB.averagePoints, 2) << std::endl;
 
     if (playerA.averagePoints > playerB.averagePoints)
     {

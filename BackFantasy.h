@@ -3,16 +3,16 @@
 
 struct Player
 {
-std::string name;
-float totalPoints;
-std::string team;
-float averagePoints;
-int gamesPlayed;
-double pointsArr[6];
+    std::string name;
+    float totalPoints;
+    std::string team;
+    float averagePoints;
+    int gamesPlayed;
+    double pointsArr[6];
 
 };
 
-constexpr double missed = 100;
+constexpr double missed = -100;
 
 
 //Welcome Message
@@ -51,7 +51,7 @@ float calculateAverage(double pointsArr[6])
     {
         if (pointsArr[i] != missed)
         {
-            totalPoints = totalPoints + double (pointsArr[i]);
+            totalPoints = totalPoints + pointsArr[i];
         }
     }
 
@@ -63,4 +63,18 @@ float calculateAverage(double pointsArr[6])
     averagePoints = totalPoints / gamesPlayed;
 
     return averagePoints;    // calculated average
+}
+
+float sumPoints(double pointsArr[6])
+{
+    float totalPoints = 0;
+    for (int i = 0; i < 6; i++)
+    {
+        if (pointsArr[i] != missed)
+        {
+            totalPoints = totalPoints + pointsArr[i];
+        }
+    }
+
+    return totalPoints;
 }
