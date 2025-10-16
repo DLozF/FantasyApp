@@ -1,80 +1,27 @@
-#include <iostream>
+#ifndef BACKFANTASY_H
+#define BACKFANTASY_H
+
 #include <string>
 
+// Struct definition
 struct Player
 {
     std::string name;
-    float totalPoints;
+    double totalPoints;
     std::string team;
-    float averagePoints;
+    double averagePoints;
     int gamesPlayed;
     double pointsArr[6];
-
 };
 
+// Constant
 constexpr double missed = -100;
 
+// Function declarations
+void welcomeMessage();
+int checkGamesPlayed(double pointsArr[6]);
+double calculateAverage(double pointsArr[6]);
+double sumPoints(double pointsArr[6]);
+double roundOff(double value, int places);
 
-//Welcome Message
-void welcomeMessage()
-{
-    std::cout << "Hello! Welcome. " << std::endl;
-}
-
-
-
-// Checks how many games played
-int checkGamesPlayed(double pointsArr[6])
-{
-    int gamesPlayed = 0;    //starts at 0
-
-    for (int i = 0; i < 6; i++)
-    {
-        if (pointsArr[i] != missed)
-        {
-            gamesPlayed++;      // counts all the games played
-        }
-    }
-
-    return gamesPlayed;
-}
-
-
-
-// Calculates Average of Points with games played
-float calculateAverage(double pointsArr[6])
-{
-    float averagePoints = 0.0;
-    float totalPoints = 0.0;
-    int gamesPlayed = checkGamesPlayed(pointsArr); // assigns gamesPlayed the value that the function "checkGamesPlayed" returned
-    for (int i = 0; i < 6; i++)
-    {
-        if (pointsArr[i] != missed)
-        {
-            totalPoints = totalPoints + pointsArr[i];
-        }
-    }
-
-    if (gamesPlayed == 0)
-    {
-        return 0.0;
-    }
-
-    averagePoints = totalPoints / gamesPlayed;
-
-    return averagePoints;    // calculated average
-}
-
-float sumPoints(double pointsArr[6])
-{
-    float totalPoints = 0;
-    for (int i = 0; i < 6; i++)
-    {
-        if (pointsArr[i] != missed)
-        {
-            totalPoints = totalPoints + pointsArr[i];
-        }
-    }
-
-    return totalPoints;
-}
+#endif

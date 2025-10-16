@@ -1,24 +1,78 @@
 #include <iostream>
-#include <string>
-#include "BackFantasy.h"
 #include <cmath>
+#include "BackFantasy.h"
 
+// Function implementations
+
+void welcomeMessage()
+{
+    std::cout << "Hello! Welcome. " << std::endl;
+}
+
+int checkGamesPlayed(double pointsArr[6])
+{
+    int gamesPlayed = 0;    //starts at 0
+
+    for (int i = 0; i < 6; i++)
+    {
+        if (pointsArr[i] != missed)
+        {
+            gamesPlayed++;      // counts all the games played
+        }
+    }
+
+    return gamesPlayed;
+}
+
+double calculateAverage(double pointsArr[6])
+{
+    double averagePoints = 0.0;
+    double totalPoints = 0.0;
+    int gamesPlayed = checkGamesPlayed(pointsArr); // assigns gamesPlayed the value that the function "checkGamesPlayed" returned
+    for (int i = 0; i < 6; i++)
+    {
+        if (pointsArr[i] != missed)
+        {
+            totalPoints = totalPoints + pointsArr[i];
+        }
+    }
+
+    if (gamesPlayed == 0)
+    {
+        return 0.0;
+    }
+
+    averagePoints = totalPoints / gamesPlayed;
+
+    return averagePoints;    // calculated average
+}
+
+double sumPoints(double pointsArr[6])
+{
+    double totalPoints = 0;
+    for (int i = 0; i < 6; i++)
+    {
+        if (pointsArr[i] != missed)
+        {
+            totalPoints = totalPoints + pointsArr[i];
+        }
+    }
+
+    return totalPoints;
+}
 
 double roundOff(double value, int places)
 {
     return round(value * pow(10.0, places)) / pow(10.0, places);
 }
 
+// Main function
 
 int main()
 {
     // declare player structs
     Player playerA;
     Player playerB;
-
-
-
-
 
     welcomeMessage();
 
@@ -42,12 +96,6 @@ int main()
             playerA.pointsArr[i] = std::stod(line);     // converts values(strings) into doubles
         }
     }
-
-
-
-
-
-
 
     // get Player B info
     std::cout << "\nEnter Player B: ";
@@ -76,15 +124,9 @@ int main()
     playerA.totalPoints = sumPoints(playerA.pointsArr);
     playerB.totalPoints = sumPoints(playerB.pointsArr);
 
-
-
-
-
     std::cout << "\nTotal Points: " << std::endl;
     std::cout << playerA.name << ": " << roundOff(playerA.totalPoints, 2) << std::endl;
     std::cout << playerB.name << ": " << roundOff(playerB.totalPoints, 2) << std::endl;
-
-
 
     std::cout << "\nAverage Points: " << std::endl;
     std::cout << playerA.name << ": " << roundOff(playerA.averagePoints, 2) << std::endl;
@@ -102,8 +144,6 @@ int main()
     {
         std::cout << "Start whichever";
     }
-
-
 
     return 0;
 }
