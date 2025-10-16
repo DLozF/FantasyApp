@@ -76,7 +76,7 @@ int main()
 
     welcomeMessage();
 
-    // get player A info2
+    // get player A info
     std::cout << "Enter Player A: ";
     std::getline(std::cin, playerA.name);
     std::cout << "\nEnter points for Player A from Week 1 - 6, if injured input x " << std::endl;
