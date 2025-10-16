@@ -8,7 +8,6 @@ struct Player
 {
     std::string name;
     double totalPoints;
-    std::string team;
     double averagePoints;
     int gamesPlayed;
     double pointsArr[6];
